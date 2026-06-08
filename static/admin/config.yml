@@ -1,9 +1,12 @@
 # local_backend allows the CMS to write directly to the local file system during development
-local_backend: true
+# local_backend: true
 
 backend:
-  name: git-gateway
+  name: github
+  repo: creedhansing-ops/app-support-hub
   branch: main
+  base_url: "https://app-support-hub.vercel.app" # Ganti dengan URL Vercel Anda yang sebenarnya jika berbeda
+  auth_endpoint: "api/auth"
 
 # These settings adjust how the generated files are structured
 media_folder: "static/img"
