@@ -1,0 +1,58 @@
+# local_backend allows the CMS to write directly to the local file system during development
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+# These settings adjust how the generated files are structured
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  - name: "knowledge-base"
+    label: "Knowledge Base"
+    folder: "versioned_docs/version-1.0/01-knowledge-base"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "ID (Unique URL part)", name: "id", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "installation-guide"
+    label: "Installation Guide"
+    folder: "versioned_docs/version-1.0/02-installation-guide"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "ID (Unique URL part)", name: "id", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "client-infrastructure"
+    label: "Client Infrastructure"
+    folder: "versioned_docs/version-1.0/03-client-infrastructure"
+    create: true
+    # We want nested folders for clients like docs/03-client-infrastructure/bank-bca/topology.md
+    # Decap CMS doesn't support deeply nested creation from UI perfectly out-of-the-box, 
+    # but we can set the path using {{slug}}
+    slug: "{{slug}}" 
+    fields:
+      - {label: "ID (Unique URL part)", name: "id", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "sop-divisi"
+    label: "SOP Divisi"
+    folder: "versioned_docs/version-1.0/04-sop-divisi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "ID (Unique URL part)", name: "id", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}

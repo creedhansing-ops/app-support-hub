@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.icon-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Docusaurus Admonition Overrides */
+.theme-admonition {
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+  border-left-width: 4px !important;
+  box-shadow: none !important;
+  margin-bottom: 1.5rem !important;
+}
+.theme-admonition-info {
+  background-color: var(--tw-color-surface-container-low, #eff4ff) !important;
+  border-color: var(--tw-color-info-blue, #0284C7) !important;
+}
+.theme-admonition-warning {
+  background-color: #FFFBEB !important;
+  border-color: var(--tw-color-caution-amber, #F59E0B) !important;
+}
+
+/* Base Layout Overrides */
+.theme-doc-sidebar-menu {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+}
+.theme-doc-markdown h1 {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+}
+.theme-doc-markdown h2 {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 1.875rem !important;
+  border-bottom: 1px solid #7576824d !important;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+.theme-doc-markdown p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.125rem !important;
+  color: #444651 !important;
+}
+.theme-doc-markdown code {
+  font-family: 'JetBrains Mono', monospace !important;
+  background-color: var(--tw-color-surface-variant, #d3e4fe) !important;
+  color: var(--tw-color-on-surface, #0b1c30) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Knowledge Base / Archive List Overrides */
+.theme-doc-sidebar-item-category > .menu__list {
+  padding-left: 1rem;
+}
+.menu__link {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--tw-color-on-surface-variant, #444651);
+  border-radius: 0.25rem !important;
+  transition: all 0.2s ease-in-out;
+}
+.menu__link:hover {
+  background-color: var(--tw-color-surface-variant, #e5e2e1) !important;
+  color: var(--tw-color-primary, #0058bf) !important;
+}
+.menu__link--active {
+  background-color: #d4e3fd !important; /* secondary-container */
+  color: var(--tw-color-secondary, #515f75) !important;
+  border-left: 4px solid var(--tw-color-primary, #0058bf) !important;
+}
+
+/* Card-like styling for Docusaurus generated category index */
+.theme-doc-version-badge, .theme-doc-breadcrumbs {
+  margin-bottom: 1rem;
+}
+article.margin-bottom--xl {
+  background-color: var(--tw-color-surface, #fcf9f8);
+  border: 1px solid rgba(229, 233, 240, 1);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  transition: all 0.2s;
+}
+article.margin-bottom--xl:hover {
+  border-color: rgba(0, 88, 191, 0.5);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0058bf;
+  --ifm-color-primary-dark: #004fac;
+  --ifm-color-primary-darker: #004ba2;
+  --ifm-color-primary-darkest: #003e85;
+  --ifm-color-primary-light: #0061d2;
+  --ifm-color-primary-lighter: #0065dc;
+  --ifm-color-primary-lightest: #0073fa;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* --- PRINT / EXPORT TO PDF CSS --- */
+@media print {
+  /* Hide sidebars, navbars, and pagination when printing */
+  nav, .theme-doc-sidebar-container, .pagination-nav, footer, .theme-doc-toc-desktop, .theme-edit-this-page, .theme-doc-footer-edit-meta-row {
+    display: none !important;
+  }
+
+  /* Expand the main content to full width */
+  main, .theme-doc-markdown {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove backgrounds to save ink */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Add page breaks before headers */
+  h1, h2 {
+    page-break-before: always;
+  }
+}
