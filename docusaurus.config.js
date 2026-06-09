@@ -133,10 +133,6 @@ const config = {
                 label: 'Knowledge Base',
                 to: '/docs/knowledge-base/common-errors',
               },
-              {
-                label: 'Installation Guide',
-                to: '/docs/category/installation-guide',
-              },
             ],
           },
           {

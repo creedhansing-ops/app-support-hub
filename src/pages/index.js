@@ -70,7 +70,7 @@ function BentoGrid() {
         </Link>
 
         {/* Installation Guides Card */}
-        <Link to="/docs/category/installation-guide" className="group relative flex flex-col p-8 bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 hover:no-underline">
+        <Link to="/docs/knowledge-base/installation-guide" className="group relative flex flex-col p-8 bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 hover:no-underline">
           <div className="w-12 h-12 rounded-lg bg-secondary-container text-primary flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
             <span className="material-symbols-outlined text-3xl">settings</span>
           </div>
