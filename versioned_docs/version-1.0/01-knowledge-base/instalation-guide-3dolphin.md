@@ -16,6 +16,7 @@ sidebar_position: 2
 ## Turn Off Firewalld
 
 ```bash
+
 systemctl disabled firewalld
 systemctl stop firewalld
 ```
@@ -25,6 +26,7 @@ systemctl stop firewalld
 - Append this parameter to `/etc/sysctl.conf`
 
 ```bash
+
 net.ipv4.ip_local_port_range = 31000 65500
 fs.aio-max-nr = 1048576
 fs.file-max = 6815744
@@ -66,6 +68,7 @@ net.ipv4.ip_forward=1
 - Run this to install epel-release, tomcat-native, memcached, and mysql
 
 ```bash
+
 dnf -y install epel-release tomcat-native memcached lsof
 dnf install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
 dnf -y install mysql-server
@@ -77,6 +80,7 @@ systemctl start memcached/mysqld
 - Run this to configure mysql user
     
     ```bash
+
     MYSQL_TEMP_PASS=$(tail -n 1500 /var/log/mysqld.log | grep 'temporary password' | awk '/localhost/{ print $13 }');
     #This command will print temporary password to the terminal and can be used for mysql_secure_installation
     echo "Generated MYSQL Temporary Password : $MYSQL_TEMP_PASS"
@@ -84,7 +88,7 @@ systemctl start memcached/mysqld
     '
     Securing the MySQL server deployment.
     
-    Enter password for user root: <Enter Temporary Password>
+    Enter password for user root: \<Enter Temporary Password\>
     
     The existing password for the user account root has expired. Please set a new password.
     
@@ -164,22 +168,22 @@ PermitEmptyPasswords no
 ClientAliveInterval 300 | done |  |
 | sysconfig/memcached | MAXCONN="1024”
 CACHESIZE="2048” | done |  |
-| hosts | {server tetangga nya (jika ada)}
+| hosts | \{server tetangga nya (jika ada)\}
 127.0.0.1 localminio.3dolphins.ai
-127.0.0.1/IP Private server {DNS Customer}
-{server third party untuk integrasi} |  |  |
+127.0.0.1/IP Private server \{DNS Customer\}
+\{server third party untuk integrasi\} |  |  |
 | profile | ...... 
 # PROXY JIKA DIBUTUHKAN
 http_proxy=http://10.40.1.68:80
 https_proxy=http://10.40.1.68:80
 # ATAU JIKA PAKAI AUTHENTIKASI
-http_proxy=[http://{user}:{password}@proxy](http://user:password@proxy/):port/
-https_proxy=[http://{user}:{password}@proxy](http://user:password@proxy/):port/
+http_proxy=[http://\{user\}:\{password\}@proxy](http://user:password@proxy/):port/
+https_proxy=[http://\{user\}:\{password\}@proxy](http://user:password@proxy/):port/
 # SETTING NO_PROXY untuk host yang tidak diinginkan lewat proxy
 no_proxy=localhost,3dolphins.ai
-export http_proxy
-export https_proxy
-export no_proxy
+`export` http_proxy
+`export` https_proxy
+`export` no_proxy
 ...... | done |  |
 | hostname | gg-dev-app-1 | done |  |
 | my.cnf | max_connections=4000
@@ -198,7 +202,7 @@ usermod -g 1001 -G inmotion dolphin | done |
 | --- | --- | --- | --- |
 | .bash_profile | .....
 OMP_NUM_THREADS=1;
-export OMP_NUM_THREADS
+`export` OMP_NUM_THREADS
 ..... |  |  |
 | .minio/certs | Must contain public.crt and private.key |  |  |
 | script | Kumpulan dari semua script yang sudah dibuat |  |  |
