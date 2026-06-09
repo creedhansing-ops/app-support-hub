@@ -39,6 +39,8 @@ collections:
     label: "Client Infrastructure"
     folder: "versioned_docs/version-1.0/03-client-infrastructure"
     create: true
+    nested:
+      depth: 3
     # We want nested folders for clients like docs/03-client-infrastructure/bank-bca/topology.md
     # Decap CMS doesn't support deeply nested creation from UI perfectly out-of-the-box, 
     # but we can set the path using {{slug}}
