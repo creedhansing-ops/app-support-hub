@@ -9,7 +9,7 @@ sidebar_position: 2
 Berikut adalah diagram arsitektur untuk infrastruktur Bank Mandiri. 
 Gambar di bawah ini merupakan **Editable SVG**, yang dibuat menggunakan **Draw.io**.
 
-:::tip Cara Mengedit Diagram Ini
+:::tip[Cara Mengedit Diagram Ini]
 1. Gambar di bawah ini bukan sekadar gambar biasa (`.png` atau `.jpg`).
 2. Format aslinya adalah `.drawio.svg`.
 3. Anda dapat mengunduh gambar ini, lalu membukanya di aplikasi [Draw.io](https://app.diagrams.net/) (File -> Open).

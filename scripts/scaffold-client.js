@@ -27,7 +27,7 @@ sidebar_position: 1
 
 Ini adalah dokumen topologi jaringan untuk **${clientName}**.
 
-:::info Detail Lingkungan
+:::info[Detail Lingkungan]
 Dokumen ini menguraikan arsitektur jaringan pada lingkungan Production.
 :::
 
@@ -57,7 +57,7 @@ sidebar_position: 2
 
 Berikut adalah daftar rincian server yang digunakan oleh **${clientName}**.
 
-:::warning Keamanan
+:::warning[Keamanan]
 Pastikan Anda merahasiakan IP Publik dan Kata Sandi menggunakan fitur \`<Secret>\`.
 :::
 

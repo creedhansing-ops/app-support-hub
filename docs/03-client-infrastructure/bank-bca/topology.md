@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Ini adalah dokumen topologi jaringan untuk **Bank BCA**.
 
-:::info Detail Lingkungan
+:::info[Detail Lingkungan]
 Dokumen ini menguraikan arsitektur jaringan pada lingkungan Production.
 :::
 

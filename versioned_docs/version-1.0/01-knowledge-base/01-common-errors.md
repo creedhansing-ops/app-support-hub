@@ -15,7 +15,7 @@ Panduan ini berisi cara-cara standar untuk mengatasi masalah aplikasi, *timeout*
 
 *Gateway timeouts* biasanya mengindikasikan layanan di belakang gagal merespons dalam batas waktu (*TTL*) yang telah ditentukan. Hal ini paling sering terkait dengan database yang kelebihan beban.
 
-:::info Tip Diagnostik
+:::info[Tip Diagnostik]
 Selalu periksa *log Load Balancer* sebelum berasumsi aplikasi mengalami kegagalan. Pada 40% kasus, masalahnya ada pada *timeout* AWS ALB yang salah konfigurasi.
 :::
 
@@ -36,7 +36,7 @@ ORDER BY query_start desc;
 
 Token JWT yang tidak valid atau kedaluwarsa adalah penyebab utama *error 401*. 
 
-:::warning Peringatan Penting
+:::warning[Peringatan Penting]
 Jangan arahkan klien untuk menghapus seluruh *cache local storage* mereka karena akan merusak *state* aplikasi lain. Targetkan hanya *key* `auth_session`. 
 Untuk memeriksa *IP address* dari *client* yang diblokir, bisa periksa IP berikut: <Secret>192.168.1.50</Secret>.
 :::

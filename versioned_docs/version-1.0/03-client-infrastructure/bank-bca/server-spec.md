@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Berikut adalah daftar rincian server yang digunakan oleh **Bank BCA**.
 
-:::warning Keamanan
+:::warning[Keamanan]
 Pastikan Anda merahasiakan IP Publik dan Kata Sandi menggunakan fitur `<Secret>`.
 :::
 
