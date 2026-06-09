@@ -38,14 +38,13 @@ collections:
   - name: "client-infrastructure"
     label: "Client Infrastructure"
     folder: "versioned_docs/version-1.0/03-client-infrastructure"
+    path: "{{client_name}}/{{slug}}"
     create: true
-    nested:
-      depth: 3
+    summary: "[{{client_name}}] {{title}}"
     # We want nested folders for clients like docs/03-client-infrastructure/bank-bca/topology.md
-    # Decap CMS doesn't support deeply nested creation from UI perfectly out-of-the-box, 
-    # but we can set the path using {{slug}}
     slug: "{{slug}}" 
     fields:
+      - {label: "Client Name (folder, e.g. bank-bca)", name: "client_name", widget: "string"}
       - {label: "ID (Unique URL part)", name: "id", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}

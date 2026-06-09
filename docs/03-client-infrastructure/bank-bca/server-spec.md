@@ -1,4 +1,5 @@
 ---
+client_name: bank-bca
 id: server-spec
 title: Server Specifications
 sidebar_position: 2

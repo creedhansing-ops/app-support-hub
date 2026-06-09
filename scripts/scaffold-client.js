@@ -21,6 +21,7 @@ const topologyContent = `---
 id: topology
 title: Network Topology
 sidebar_position: 1
+client_name: ${slug}
 ---
 
 # Topology: ${clientName}
@@ -51,6 +52,7 @@ const serverSpecContent = `---
 id: server-spec
 title: Server Specifications
 sidebar_position: 2
+client_name: ${slug}
 ---
 
 # Server Spec: ${clientName}
