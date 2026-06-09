@@ -24,16 +24,7 @@ collections:
       - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
       - {label: "Content", name: "body", widget: "markdown"}
 
-  - name: "installation-guide"
-    label: "Installation Guide"
-    folder: "versioned_docs/version-1.0/02-installation-guide"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "ID (Unique URL part)", name: "id", widget: "string"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
-      - {label: "Content", name: "body", widget: "markdown"}
+
 
   - name: "client-infrastructure"
     label: "Client Infrastructure"
