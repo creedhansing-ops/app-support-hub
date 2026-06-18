@@ -1,7 +1,7 @@
 ---
 client_name: bank-mandiri
 id: topology-drawio
-title: Topology Server (Draw.io)
+title: Topology Server
 sidebar_position: 2
 ---
 # Topologi Server Bank Mandiri
