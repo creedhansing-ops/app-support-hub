@@ -19,6 +19,7 @@ Gambar di bawah ini merupakan **Editable SVG**, yang dibuat menggunakan **Draw.i
 
 ![Topologi Mandiri Mita](mita-infrastructure.png "Topologi Mandiri Mita")
 
+ {/ *Nanti ganti dengan file .drawio.svg yang asli* /}
 
 ## Detail Spesifikasi
 
