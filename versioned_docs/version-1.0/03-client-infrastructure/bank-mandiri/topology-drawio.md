@@ -17,7 +17,7 @@ Gambar di bawah ini merupakan **Editable SVG**, yang dibuat menggunakan **Draw.i
 4. Kode XML struktur grafis Anda sudah tertanam (ter-*embed*) di dalam gambar SVG ini sehingga Anda bisa merevisinya kapan pun tanpa kehilangan sumber aslinya!
    :::
 
-![Topologi Draw.io SVG](mita-infrastructure.png)
+![Topologi Mandiri Mita](mita-infrastructure.png "Topologi Mandiri Mita")
 
  {/ *Nanti ganti dengan file .drawio.svg yang asli* /}
 
