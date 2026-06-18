@@ -19,7 +19,7 @@ Gambar di bawah ini merupakan **Editable SVG**, yang dibuat menggunakan **Draw.i
 
 ![Topologi Draw.io SVG](mita-infrastructure.svg)
 
- {/ *Nanti ganti dengan file .drawio.svg yang asli* /}
+{/* Nanti ganti dengan file .drawio.svg yang asli */}
 
 ## Detail Spesifikasi
 
