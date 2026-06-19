@@ -162,7 +162,7 @@
 
     function insertIntoEditor(markdown) {
       const slateEditor = document.querySelector('[data-slate-editor="true"]');
-      if (slateEditor) {
+      if (slateEditor && slateEditor.offsetParent !== null) {
         alert('Mohon matikan fitur "Rich Text" (ubah ke mode Markdown) terlebih dahulu sebelum melakukan import dokumen.');
         return;
       }
