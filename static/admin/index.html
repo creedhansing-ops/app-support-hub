@@ -161,11 +161,6 @@
     }
 
     function insertIntoEditor(markdown) {
-      const slateEditor = document.querySelector('[data-slate-editor="true"]');
-      if (slateEditor && slateEditor.offsetParent !== null) {
-        alert('Mohon matikan fitur "Rich Text" (ubah ke mode Markdown) terlebih dahulu sebelum melakukan import dokumen.');
-        return;
-      }
         const textareas = document.querySelectorAll('textarea');
         let targetTextarea = null;
         // Assume the markdown editor is the one without a specific short name
@@ -179,7 +174,7 @@
           targetTextarea = textareas[textareas.length - 1]; // usually the last one is body
         }
 
-        if (targetTextarea) {
+        if (targetTextarea && targetTextarea.offsetParent !== null) {
           // React textareas need a special way to trigger onChange
           const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
           const currentValue = targetTextarea.value;
@@ -188,7 +183,7 @@
           const ev2 = new Event('input', { bubbles: true });
           targetTextarea.dispatchEvent(ev2);
         } else {
-          alert('Editor tidak ditemukan! Pastikan Anda sedang membuka artikel.');
+          alert('Mohon matikan fitur "Rich Text" (ubah ke mode Markdown) terlebih dahulu sebelum melakukan import dokumen.');
         }
     }
   </script>
