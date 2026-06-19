@@ -168,16 +168,9 @@
       
       const slateEditor = document.querySelector('[data-slate-editor="true"]');
       if (slateEditor) {
-        // Simple paste event simulation
         slateEditor.focus();
-        const dataTransfer = new DataTransfer();
-        dataTransfer.setData('text/plain', markdown);
-        const event = new ClipboardEvent('paste', {
-          clipboardData: dataTransfer,
-          bubbles: true,
-          cancelable: true
-        });
-        slateEditor.dispatchEvent(event);
+        // Use insertText command to natively insert text into the contenteditable element
+        document.execCommand('insertText', false, markdown);
       } else {
         const textareas = document.querySelectorAll('textarea');
         let targetTextarea = null;
