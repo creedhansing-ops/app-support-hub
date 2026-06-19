@@ -5,9 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager - SupportDocs</title>
   <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+  <style>
+    /* Styling for our custom import button */
+    #custom-import-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10000;
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: none; /* Hidden by default, shown when editor is open */
+      border: none;
+      transition: background-color 0.2s;
+    }
+    #custom-import-btn:hover {
+      background-color: #2563eb;
+    }
+    #import-file-input {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <!-- Include the script that builds the page and powers Decap CMS -->
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Libraries for parsing -->
+  <script src="https://unpkg.com/mammoth@1.4.21/mammoth.browser.min.js"></script>
+  <script src="https://unpkg.com/turndown@7.1.2/dist/turndown.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+  <!-- Custom Importer UI -->
+  <button id="custom-import-btn">📥 Import Dokumen (Word/PDF/TXT)</button>
+  <input type="file" id="import-file-input" accept=".docx,.pdf,.txt" />
+
+  <script>
+    // Initialize pdf.js worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    const importBtn = document.getElementById('custom-import-btn');
+    const fileInput = document.getElementById('import-file-input');
+    const turndownService = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced' });
+
+    // Function to check if we are in the editor view
+    function checkEditorView() {
+      // Decap CMS puts the markdown editor inside elements with specific classes, or we just check URL
+      const hash = window.location.hash;
+      if (hash.includes('/collections/') && hash.includes('/entries/')) {
+        importBtn.style.display = 'block';
+      } else if (hash.includes('/collections/') && hash.includes('/new')) {
+        importBtn.style.display = 'block';
+      } else {
+        importBtn.style.display = 'none';
+      }
+    }
+
+    // Check on load and when hash changes
+    window.addEventListener('hashchange', checkEditorView);
+    // Observe DOM changes because Decap CMS is a SPA
+    const observer = new MutationObserver(checkEditorView);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    importBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      importBtn.innerText = '⏳ Mengimpor...';
+      importBtn.disabled = true;
+
+      try {
+        let markdown = '';
+        const ext = file.name.split('.').pop().toLowerCase();
+
+        if (ext === 'docx') {
+          const arrayBuffer = await file.arrayBuffer();
+          const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+          markdown = turndownService.turndown(result.value);
+        } else if (ext === 'pdf') {
+          const arrayBuffer = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+          let text = '';
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            const strings = content.items.map(item => item.str);
+            text += strings.join(' ') + '\n\n';
+          }
+          markdown = text;
+        } else if (ext === 'txt') {
+          markdown = await file.text();
+        } else {
+          alert('Format file tidak didukung. Gunakan .docx, .pdf, atau .txt');
+          resetBtn();
+          return;
+        }
+
+        // Sanitasi Markdown untuk MDX (Docusaurus sangat ketat dengan karakter tertentu)
+        // 1. Hapus sisa-sisa tag HTML yang tidak dikenal Turndown
+        markdown = markdown.replace(/<[^>]+>/g, '');
+        // 2. Escape kurung kurawal agar tidak dianggap sebagai JavaScript (JSX)
+        markdown = markdown.replace(/\{/g, '\\{').replace(/\}/g, '\\}');
+
+        insertIntoEditor(markdown);
+      } catch (err) {
+        console.error(err);
+        alert('Gagal mengonversi file: ' + err.message);
+      }
+      resetBtn();
+      fileInput.value = ''; // Reset input
+    });
+
+    function resetBtn() {
+      importBtn.innerText = '📥 Import Dokumen (Word/PDF/TXT)';
+      importBtn.disabled = false;
+    }
+
+    function insertIntoEditor(markdown) {
+      // Find the Decap CMS markdown editor
+      // Decap CMS markdown widget uses an element with contenteditable or textarea
+      // Finding the active editor is tricky. The markdown body is usually the largest textarea
+      // or an element inside [data-slate-editor="true"]
+      
+      const slateEditor = document.querySelector('[data-slate-editor="true"]');
+      if (slateEditor) {
+        // Simple paste event simulation
+        slateEditor.focus();
+        const dataTransfer = new DataTransfer();
+        dataTransfer.setData('text/plain', markdown);
+        const event = new ClipboardEvent('paste', {
+          clipboardData: dataTransfer,
+          bubbles: true,
+          cancelable: true
+        });
+        slateEditor.dispatchEvent(event);
+      } else {
+        const textareas = document.querySelectorAll('textarea');
+        let targetTextarea = null;
+        // Assume the markdown editor is the one without a specific short name
+        for (let ta of textareas) {
+          if (ta.id && ta.id.includes('body')) {
+            targetTextarea = ta;
+            break;
+          }
+        }
+        if (!targetTextarea && textareas.length > 0) {
+          targetTextarea = textareas[textareas.length - 1]; // usually the last one is body
+        }
+
+        if (targetTextarea) {
+          // React textareas need a special way to trigger onChange
+          const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
+          const currentValue = targetTextarea.value;
+          nativeInputValueSetter.call(targetTextarea, currentValue + (currentValue ? '\n\n' : '') + markdown);
+          
+          const ev2 = new Event('input', { bubbles: true });
+          targetTextarea.dispatchEvent(ev2);
+        } else {
+          alert('Editor tidak ditemukan! Pastikan Anda sedang membuka artikel.');
+        }
+      }
+    }
+  </script>
 </body>
 </html>

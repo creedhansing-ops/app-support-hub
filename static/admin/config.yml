@@ -1,5 +1,5 @@
 # local_backend allows the CMS to write directly to the local file system during development
-# local_backend: true
+local_backend: true
 
 backend:
   name: github
