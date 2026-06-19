@@ -40,6 +40,12 @@ const config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   plugins: [
     './plugins/tailwind-plugin.cjs',
     [

@@ -35,6 +35,36 @@
 <body>
   <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Custom Preview Template for Docusaurus -->
+  <script>
+    // Daftarkan style Docusaurus ke preview CMS
+    CMS.registerPreviewStyle('/css/custom.css');
+    
+    var DocusaurusPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var body = this.props.widgetFor('body');
+        
+        // Membungkus preview dengan elemen dan class yang biasa dipakai Docusaurus
+        return h('div', {className: "container margin-vert--lg", style: { padding: '20px', fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif' }},
+          h('div', {className: "row"},
+            h('div', {className: "col col--12"},
+              h('article', {},
+                h('div', {className: "markdown"},
+                  h('h1', { style: { fontSize: '2.5rem', marginBottom: '1rem' } }, entry.getIn(['data', 'title'])),
+                  body
+                )
+              )
+            )
+          )
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate('knowledge_base', DocusaurusPreview);
+    CMS.registerPreviewTemplate('client_infrastructure', DocusaurusPreview);
+  </script>
   
   <!-- Libraries for parsing -->
   <script src="https://unpkg.com/mammoth@1.4.21/mammoth.browser.min.js"></script>
