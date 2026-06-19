@@ -122,7 +122,7 @@ const config = {
             label: 'Docs',
           },
           {to: '/docs/category/client-infrastructure', label: 'Client Infrastructure', position: 'left'},
-          {to: '/docs/knowledge-base/common-errors', label: 'Knowledge Base', position: 'left'},
+          {to: '/docs/knowledge-base/channel-youtube', label: 'Knowledge Base', position: 'left'},
           {
             type: 'docsVersionDropdown',
             position: 'right',
@@ -137,7 +137,7 @@ const config = {
             items: [
               {
                 label: 'Knowledge Base',
-                to: '/docs/knowledge-base/common-errors',
+                to: '/docs/knowledge-base/channel-youtube',
               },
             ],
           },
