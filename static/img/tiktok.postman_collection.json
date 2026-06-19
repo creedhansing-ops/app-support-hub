@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "99804832-4aeb-4cde-bcda-882811302527",
+    "name": "Tiktok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36489533"
+  },
+  "item": [
+    {
+      "name": "Get Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"clientId\": \"43439913d03909fdad415bcb2c668872\",\r\n    \"clientSecret\": \"6634646335373339623531383062623262643731313664653962336263373061\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://hook.3dolphins.io/gateway/graph/auth",
+          "protocol": "https",
+          "host": [
+            "hook",
+            "3dolphins",
+            "io"
+          ],
+          "path": [
+            "gateway",
+            "graph",
+            "auth"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add To Gateway",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eJxdjkFrwzAMhf-LzjFYliPbvZYeCjutsMvYwbFd4tElJXGgUPbfp25shyEEj09PT7rDe6uwA6sjssNBmZSism7wKnIIKjssPTqNLhTooK6rmCnPl-tYp1VI3PI_UmODHToOzjr01EG5XX-AJ-ofIG5tnJfaapG0Vzgdnl-O-wO8dbCU81LWcT9vk4ToP_BUP6oAhR2kSy1TOz6uWrIUAlLWFHQ455gt9kMaTGL23hn4dZ9KWorsAzNZtix_kCOiwEYUkifNRrQ0W5mgFIuv_3aQUBKqGeHzC432UwM.e1U6B3ZGLdNfH_Lp_0qjexKUzyShm4JlDQUGZNkujSs",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"channelName\":\"Tiktok_3dolphin\",\r\n        \"channelType\":\"Tiktok\",\r\n        \"channelPort\":[31046],\r\n        \"channelAccountId\":\"-000B7MuJ5sheFhT5GOAjAG-QWNq1vtxYOHZ\",\r\n        \"deleted\":false,\r\n        \"callbackUrl\":\"https://permata-dev.3dolphins.ai:31046/47408e4d9567381ed5bd4be94ea7550c/callback\",\r\n        \"id\":\"85fbb356af60a0afd11e04368bd5539f\",\r\n        \"createdDate\":\"Jan 30, 2026, 11:30:00 AM\",\r\n        \"modifiedDate\":\"Jan 30, 2026, 11:30:00 AM\"\r\n        }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://hook.3dolphins.io/gateway/graph/gateway/add",
+          "protocol": "https",
+          "host": [
+            "hook",
+            "3dolphins",
+            "io"
+          ],
+          "path": [
+            "gateway",
+            "graph",
+            "gateway",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register Gateway to TikTok",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"app_id\": \"7507444364323651601\",\r\n    \"secret\": \"ef8fc5b32e24184288ddb1806bc973e65ae8ba13\",\r\n    \"event_type\": \"DIRECT_MESSAGE\", //DIRECT_MESSAGE & COMMENT\r\n    \"callback_url\": \"https://hook.3dolphins.io/gateway/tiktok/callback\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://business-api.tiktok.com/open_api/v1.3/business/webhook/update/",
+          "protocol": "https",
+          "host": [
+            "business-api",
+            "tiktok",
+            "com"
+          ],
+          "path": [
+            "open_api",
+            "v1.3",
+            "business",
+            "webhook",
+            "update",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Register Gateway to TikTok",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"app_id\": \"7507444364323651601\",\r\n    \"secret\": \"ef8fc5b32e24184288ddb1806bc973e65ae8ba13\",\r\n    \"event_type\": \"DIRECT_MESSAGE\", //DIRECT_MESSAGE & COMMENT\r\n    \"callback_url\": \"https://hook.3dolphins.io/gateway/tiktok/callback\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://business-api.tiktok.com/open_api/v1.3/business/webhook/update/",
+          "protocol": "https",
+          "host": [
+            "business-api",
+            "tiktok",
+            "com"
+          ],
+          "path": [
+            "open_api",
+            "v1.3",
+            "business",
+            "webhook",
+            "update",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
