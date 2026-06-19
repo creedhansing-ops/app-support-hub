@@ -68,13 +68,3 @@ body: >-
         - snapshots
         - recover
     response: []
-  - name: New Request
-    request:
-      method: GET
-      header: []
-    response: []
-  - name: New Request
-    request:
-      method: GET
-      header: []
-    response: []

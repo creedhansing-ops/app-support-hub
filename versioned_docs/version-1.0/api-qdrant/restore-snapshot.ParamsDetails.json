@@ -1,0 +1,1 @@
+{"parameters":[{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"},{"name":"","in":"header","schema":{"type":"string"}}]}

@@ -54,3 +54,14 @@ collections:
       - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
       - {label: "Content", name: "body", widget: "markdown"}
       - {label: "Attachment Diagram / File", name: "attachment", widget: "file", required: false}
+
+  - name: "openapi-specs"
+    label: "OpenAPI Specs"
+    folder: "openapi"
+    create: true
+    extension: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul API", name: "title", widget: "string"}
+      - {label: "Opsi 1: Upload File API (JSON Postman / YAML OpenAPI)", name: "spec_file", widget: "file", required: false}
+      - {label: "Opsi 2: Paste Teks API", name: "body", widget: "text", required: false}
