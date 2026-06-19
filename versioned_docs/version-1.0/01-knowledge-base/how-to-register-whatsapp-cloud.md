@@ -7,7 +7,7 @@ Document Langkah Langkah re-register whatsapp cloud
 
 1. Get phone number
 
-   * <https://graph.facebook.com/v22.0/1090017878107349/phone_numbers?access_token=EAANRTamcJV0BO6CZA0OMK3dMqdv3NxaMLtJW4e0RKnjUtPUzDPhxWQIrJ4sYTJtitMZAWLvogq1AeihcXOpGQuWxehPl1ocHX4r1ShfBxWSugCbLnqHeVGKbMOeNXUgy87iss9Wbe1sZCM0uZBzc6y8HAcQs7zgCVZATb9E3VZBkt1PMNh981ZCApH8nx0gtn6G>
+   * [https://graph.facebook.com/v22.0/1090017878107349/phone_numbers?access_token=EAANRTamcJV0BO6CZA0OMK3dMqdv3NxaMLtJW4e0RKnjUtPUzDPhxWQIrJ4sYTJtitMZAWLvogq1AeihcXOpGQuWxehPl1ocHX4r1ShfBxWSugCbLnqHeVGKbMOeNXUgy87iss9Wbe1sZCM0uZBzc6y8HAcQs7zgCVZATb9E3VZBkt1PMNh981ZCApH8nx0gtn6G](https://graph.facebook.com/v22.0/1090017878107349/phone_numbers?access_token=EAANRTamcJV0BO6CZA0OMK3dMqdv3NxaMLtJW4e0RKnjUtPUzDPhxWQIrJ4sYTJtitMZAWLvogq1AeihcXOpGQuWxehPl1ocHX4r1ShfBxWSugCbLnqHeVGKbMOeNXUgy87iss9Wbe1sZCM0uZBzc6y8HAcQs7zgCVZATb9E3VZBkt1PMNh981ZCApH8nx0gtn6G)
    * V22.0 didapat dari version facebook
    * 1090017878107349 didapat dari WABA ID (tergantung permintaan)
    * Access token EAANRTamcJV0BO6CZA0OMK3dMqdv3NxaMLtJW4e0RKnjUtPUzDPhxWQIrJ4sYTJtitMZAWLvogq1AeihcXOpGQuWxehPl1ocHX4r1ShfBxWSugCbLnqHeVGKbMOeNXUgy87iss9Wbe1sZCM0uZBzc6y8HAcQs7zgCVZATb9E3VZBkt1PMNh981ZCApH8nx0gtn6G
@@ -23,7 +23,7 @@ Document Langkah Langkah re-register whatsapp cloud
 
 3. Register phone
 
-   * <https://graph.facebook.com/v22.0/601754839690894/register>
+   * [https://graph.facebook.com/v22.0/601754839690894/register](https://graph.facebook.com/v22.0/601754839690894/register)
 
      * Isi authorization dengan token
 
