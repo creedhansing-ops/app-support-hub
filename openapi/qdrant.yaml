@@ -1,0 +1,80 @@
+title: Qdrant
+body: >-
+  info:
+    _postman_id: 75b116e5-a089-4977-896d-1927acdb5394
+    name: QDRANT
+    schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+    _exporter_id: '36489533'
+  item:
+
+  - name: Hapus Data Qdrant
+    request:
+      auth:
+        type: noauth
+      method: POST
+      header:
+      - key: Content-Type
+        value: application/json
+      body:
+        mode: raw
+        raw: "{\n    \"filter\": {\n      \"must\": []\n    }\n  }"
+        options:
+          raw:
+            language: json
+      url:
+        raw: http://34.101.105.125:6333/collections/gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2/points/delete
+        protocol: http
+        host:
+        - '34'
+        - '101'
+        - '105'
+        - '125'
+        port: '6333'
+        path:
+        - collections
+        - gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2
+        - points
+        - delete
+    response: []
+  - name: Restore Snapshot
+    request:
+      method: POST
+      header:
+      - key: Content-Type
+        value: application/json
+      - key: ''
+        value: ''
+        type: text
+        disabled: true
+      body:
+        mode: raw
+        raw: "{\n  \"location\": \"file:///qdrant/snapshots/gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2/gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2-844361931942763-2025-06-04-06-36-30.snapshot\"\
+          \n}"
+        options:
+          raw:
+            language: json
+      url:
+        raw: http://34.101.105.125:6333/collections/gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2/snapshots/recover
+        protocol: http
+        host:
+        - '34'
+        - '101'
+        - '105'
+        - '125'
+        port: '6333'
+        path:
+        - collections
+        - gg-dev-app-82ab0fd5cfd1e80d1ff97c0cfc9aa9e2
+        - snapshots
+        - recover
+    response: []
+  - name: New Request
+    request:
+      method: GET
+      header: []
+    response: []
+  - name: New Request
+    request:
+      method: GET
+      header: []
+    response: []
