@@ -4,9 +4,11 @@ export default function Root({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isMounted, setIsMounted] = useState(false);
   
   // Periksa token di localStorage saat komponen dimuat
   useEffect(() => {
+    setIsMounted(true);
     const token = localStorage.getItem('support_docs_auth');
     if (token === 'true') {
       setIsAuthenticated(true);
@@ -23,6 +25,13 @@ export default function Root({ children }) {
       setError('Kata sandi salah. Silakan coba lagi.');
     }
   };
+
+  // Selama SSR (build static) dan render pertama di client, 
+  // kita HARUS merender children agar plugin search bisa membaca kontennya.
+  // Namun kita sembunyikan dengan CSS agar tidak terlihat sebelum dicek.
+  if (!isMounted) {
+    return <div style={{ display: 'none' }}>{children}</div>;
+  }
 
   if (isAuthenticated) {
     return <>{children}</>;
