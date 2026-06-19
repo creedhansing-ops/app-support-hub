@@ -161,30 +161,57 @@
     }
 
     function insertIntoEditor(markdown) {
-        const textareas = document.querySelectorAll('textarea');
-        let targetTextarea = null;
-        // Assume the markdown editor is the one without a specific short name
-        for (let ta of textareas) {
-          if (ta.id && ta.id.includes('body')) {
-            targetTextarea = ta;
-            break;
-          }
-        }
-        if (!targetTextarea && textareas.length > 0) {
-          targetTextarea = textareas[textareas.length - 1]; // usually the last one is body
-        }
+      let inserted = false;
 
-        if (targetTextarea && targetTextarea.offsetParent !== null) {
-          // React textareas need a special way to trigger onChange
+      // Method 1: Slate Editor (Rich Text)
+      const slateEditor = document.querySelector('[data-slate-editor="true"]');
+      if (slateEditor) {
+        try {
+          slateEditor.focus();
+          const dataTransfer = new DataTransfer();
+          dataTransfer.setData('text/plain', markdown);
+          const event = new ClipboardEvent('paste', {
+            clipboardData: dataTransfer,
+            bubbles: true,
+            cancelable: true
+          });
+          slateEditor.dispatchEvent(event);
+          inserted = true;
+        } catch (e) {
+          console.error('Slate insert failed', e);
+        }
+      }
+
+      // Method 2: Textarea (Markdown)
+      const textareas = document.querySelectorAll('textarea');
+      let targetTextarea = null;
+      for (let ta of textareas) {
+        if (ta.id && ta.id.includes('body')) {
+          targetTextarea = ta;
+          break;
+        }
+      }
+      if (!targetTextarea && textareas.length > 0) {
+        targetTextarea = textareas[textareas.length - 1];
+      }
+
+      if (targetTextarea) {
+        try {
           const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
           const currentValue = targetTextarea.value;
+          // Only append if it's not already duplicated
           nativeInputValueSetter.call(targetTextarea, currentValue + (currentValue ? '\n\n' : '') + markdown);
-          
           const ev2 = new Event('input', { bubbles: true });
           targetTextarea.dispatchEvent(ev2);
-        } else {
-          alert('Mohon matikan fitur "Rich Text" (ubah ke mode Markdown) terlebih dahulu sebelum melakukan import dokumen.');
+          inserted = true;
+        } catch (e) {
+          console.error('Textarea insert failed', e);
         }
+      }
+
+      if (!inserted) {
+        alert('Editor tidak ditemukan! Pastikan Anda sedang membuka artikel.');
+      }
     }
   </script>
 </body>
