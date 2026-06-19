@@ -161,17 +161,11 @@
     }
 
     function insertIntoEditor(markdown) {
-      // Find the Decap CMS markdown editor
-      // Decap CMS markdown widget uses an element with contenteditable or textarea
-      // Finding the active editor is tricky. The markdown body is usually the largest textarea
-      // or an element inside [data-slate-editor="true"]
-      
       const slateEditor = document.querySelector('[data-slate-editor="true"]');
       if (slateEditor) {
-        slateEditor.focus();
-        // Use insertText command to natively insert text into the contenteditable element
-        document.execCommand('insertText', false, markdown);
-      } else {
+        alert('Mohon matikan fitur "Rich Text" (ubah ke mode Markdown) terlebih dahulu sebelum melakukan import dokumen.');
+        return;
+      }
         const textareas = document.querySelectorAll('textarea');
         let targetTextarea = null;
         // Assume the markdown editor is the one without a specific short name
@@ -196,7 +190,6 @@
         } else {
           alert('Editor tidak ditemukan! Pastikan Anda sedang membuka artikel.');
         }
-      }
     }
   </script>
 </body>
