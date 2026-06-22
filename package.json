@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run clean-api && npm run gen-api && node scripts/clean-sidebar.js && docusaurus start",
-    "build": "npm run clean-api && npm run gen-api && node scripts/clean-sidebar.js && docusaurus build",
+    "start": "npm run clean-api && npm run gen-api && node scripts/clean-sidebar.js && node scripts/fix-mdx.js && docusaurus start",
+    "build": "npm run clean-api && npm run gen-api && node scripts/clean-sidebar.js && node scripts/fix-mdx.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
